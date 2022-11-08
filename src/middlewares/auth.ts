@@ -12,7 +12,7 @@ export async function verifyToken(req:any, res:any, next:any) {
             const decoded = jwt.verify(token, process.env.JWT_SECRET as string)as JwtPayload;
             console.log("decoded", decoded);
             const user = await db.User.findOne({ where: { id: decoded?.id}})
-            // console.log(user)
+            console.log(user)
             req.user = user;
             return next();
         } catch (error) {

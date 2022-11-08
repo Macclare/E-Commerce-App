@@ -9,7 +9,7 @@ export const createProduct = async (req: any, res: any) => {
 		if (error) {
 			return res.status(400).json({ message: error.details[0].message });
 		}
-		console.log(req.body);
+		console.log("bug",req.user);
 		console.log(req.file);
 		const filepath = req.file.path.split("public")[1];
 		const product = await ProductService.createProduct({
@@ -27,6 +27,7 @@ export const createProduct = async (req: any, res: any) => {
 export const getProducts = async (req: any, res: any) => {
 	try {
 		const products = await ProductService.getProducts();
+		console.log(products)
 		res.status(200).json({ message: MSG_TYPES.PRODUCTS_FOUND, products });
 	} catch (error: any) {
 		res.status(error.statusCode || 500).json({ message: error.message });
@@ -79,6 +80,7 @@ export const deleteProduct = async (req: any, res: any) => {
 export const rateProduct = async (req: any, res: any) => {
 	try {
 		const product = await ProductService.rateProduct(req.params.id, res.body);
+		console.log(product)
 		res.status(200).json({ message: MSG_TYPES.PRODUCT_RATED, product });
 	} catch (error: any) {
 		res.status(error.statusCode || 500).json({ message: error.message });

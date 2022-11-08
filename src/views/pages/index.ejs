@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="body" style="background-color: #caa5ad; height: 200%; min-height: 100vh; display: flex; flex-direction: column;">
+        
+  <%- include('../partials/header'); %>
+    
+
+    <!-- Background image -->
+  <div
+  class="p-5 text-center bg-image"
+  style="
+    background-image: url('https://mdbcdn.b-cdn.net/img/new/slides/041.webp');
+    height: 200px;">
+    <!-- <img src="images/NewYorkers.jpeg" class="img-fluid"/> -->
+  <div class="mask" style="background-color: rgba(0, 0, 0, 0.6);">
+    <div class="d-flex justify-content-center align-items-center">
+      <div class="text-white">
+        <h1 class="mb-3">MACCX STORE</h1>
+        <h4 class="mb-3">Premium fashion styling</h4>
+        <a class="btn btn-outline-light btn-lg" href="#!" role="button"
+        >Contact us</a
+        >
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Background image -->
+ 
+  <main>
+        <div class="container text-center p-5">
+            <div class="row">
+              <% for(let i=0; i<products.length; i++) { %>
+              <div class="col col-3 align-self-start">
+                
+                <div class="card mb-4">
+                    <div class="bg-image hover-overlay ripple" data-mdb-ripple-color="light">
+                      <img src="<%= products[i].image %>" class="img-fluid"/>
+                      <a href="#!">
+                        <div class="mask" style="background-color: rgba(251, 251, 251, 0.15);"></div>
+                      </a>
+                    </div>
+                    <div class="card-body">
+                      <h5 class="card-title"><%- products[i].name %></h5>
+                      <p class="card-text"><%- products[i].description %></p>
+                      <a href="#!" class="btn btn-primary">$<%- products[i].price %></a>
+                      <a href="/show/<%= products[i].id%>" class="btn btn-primary">View</a>
+                    </div>
+                  </div>
+             
+                </div>
+                <% } %>
+            </div>
+          </div>
+  
+    </main>
+    
+      <%- include('../partials/footer'); %>
+</body>
+</html>

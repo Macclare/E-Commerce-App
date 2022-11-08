@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="body" style=" background-color: #caa5ad">
+    <%- include('../partials/header'); %>
+    
+    <div class="px-5 justify-content-center align-items-center h-100 p-5" style="width: 100%;">
+        <div class="row g-5 ">
+          <div class="col-md-4">
+            <img src="<%= section.image %>" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+                <h5 class="card-title"><%- section.name %></h5>
+                <p class="card-text"><%- section.brand %><span style="color:yellow; font-size: 20px;">***</span> </p>
+                <p class="card-text"><%- section.category %></p>
+                <p class="card-text"><%- section.countInStock %></p>
+                <p class="card-text"><%- section.description %></p>
+                <a href="#" class="btn btn-primary"><%- section.price %></a>
+                <a href="home" class="btn btn-primary">Add to cart</a>
+            </div>
+          </div>
+        </div>
+      </div>
+
+
+
+      <%- include('../partials/footer'); %>   
+</body>
+</html>

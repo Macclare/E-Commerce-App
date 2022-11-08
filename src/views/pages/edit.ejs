@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include('../partials/head'); %>
+</head>
+<body class="body" style=" background-color: #caa5ad; ">
+  <%- include('../partials/header'); %>
+
+   <div class="container p-4 text-center">
+    <h1>Edit Product</h1>  
+    <a href="/dashboard" class="btn btn-sm float-end" style="background:whitesmoke;">view products</a>
+   </div>
+
+<div class="container p-5 vh-100">
+    <form action="/addproduct" method="post" style="width:50%; margin:0 auto ">
+        <!-- Name -->
+        <div class="form-outline mb-4">
+          <input type="text" name="name" id="form4Example1" class="form-control" />
+          <label class="form-label" for="form4Example1">Product Name</label>
+        </div>
+      
+        <!-- Product brand-->
+        <div class="form-outline mb-4">
+          <input type="text" name="brand" id="form4Example2" class="form-control" />
+          <label class="form-label" for="form4Example2">Product Brand</label>
+        </div>
+        <!-- Product category -->
+        <div class="form-outline mb-4">
+          <input type="text" name="category" id="form4Example2" class="form-control" />
+          <label class="form-label" for="form4Example2">Product Category</label>
+        </div>
+
+        <!-- Price -->
+        <div class="form-outline mb-4">
+          <input type="text" name="price" id="form4Example2" class="form-control" />
+          <label class="form-label" for="form4Example2">Price</label>
+        </div>
+
+        <!-- Count in stock -->
+        <div class="form-outline mb-4">
+          <input type="text" name="countInStock" id="form4Example2" class="form-control" />
+          <label class="form-label" for="form4Example2">Count in Stock</label>
+        </div>
+      
+        <!-- Product description -->
+        <div class="form-outline mb-4">
+          <textarea class="form-control" name="description" id="form4Example3" rows="4"></textarea>
+          <label class="form-label" for="form4Example3">Product description</label>
+        </div>
+    
+        <!-- image -->
+        <div class="form-outline mb-4">
+            <input type="file" name="image" id="form4Example2" class="form-control"/>
+            <label class="form-label" for="form4Example2"></label>
+          </div>
+
+        <!-- Submit button -->
+        <button type="submit" class="btn btn-block mb-4" style="background-color: whitesmoke;">Submit</button>
+      </form>
+</div>
+
+
+        <%- include('../partials/footer'); %>
+    
+</body>
+</html>
