@@ -7,7 +7,7 @@ import * as UserControllers from "../controller/users";
 UserRoutes.post("/signup", UserControllers.signup);
 UserRoutes.post("/login", UserControllers.login);
 
-UserRoutes.get('/home', home)
+UserRoutes.get('/', home)
 UserRoutes.get('/login', loggin)
 UserRoutes.get('/signup', signin)
 UserRoutes.get('/show/:id', show)

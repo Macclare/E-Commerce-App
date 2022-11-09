@@ -6,6 +6,7 @@
     "start": "node ./bin/www",
     "dev": "nodemon ./bin/www",
     "set-node-env": "set NODE_ENV=test",
+    "build": "tsc",
     "test": "yarn run set-node-env && jest",
     "migrate-up": "sequelize db:migrate",
     "migrate-down": "sequelize db:migrate:undo:all",
