@@ -1,19 +1,25 @@
 import express from 'express';
 const UserRoutes = express.Router();
-import {home, loggin, signin, show, dashboard, addproduct, edit} from '../controller/users'
+import * as ProductController from "../controller/product";
+import { verifyToken } from "../middlewares/auth";
+import {home, loggin, signin, show, addproduct, logout} from '../controller/users'
 
 import * as UserControllers from "../controller/users";
 
 UserRoutes.post("/signup", UserControllers.signup);
 UserRoutes.post("/login", UserControllers.login);
 
-UserRoutes.get('/', home)
+UserRoutes.get('/home', home)
 UserRoutes.get('/login', loggin)
+UserRoutes.get('/logout', logout)
 UserRoutes.get('/signup', signin)
 UserRoutes.get('/show/:id', show)
-UserRoutes.get('/dashboard', dashboard)
+
+UserRoutes.use(verifyToken)
+
+UserRoutes.get('/dashboard', ProductController.getProductsForDashboard)
 UserRoutes.get('/addproduct', addproduct)
-UserRoutes.get('/edit', edit)
+UserRoutes.get('/edit/:id', ProductController.getProductByIdForEdit)
 
 
 export default UserRoutes;

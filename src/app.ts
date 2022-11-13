@@ -5,6 +5,10 @@ import cookieParser from "cookie-parser";
 import logger from "morgan";
 import cors from "cors";
 import dotenv from "dotenv";
+import session from "express-session";
+import methodOverride from "method-override";
+const SequelizeStore = require("connect-session-sequelize")(session.Store)
+
 
 dotenv.config();
 
@@ -23,6 +27,14 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, "public")));
+app.use(methodOverride('_method'))
+app.use(session({
+	secret: <string>process.env.SESSION_SECRET, //INSTANCE OF NODE.JS RUNNING ON MY MACHINE
+	resave: true,
+	saveUninitialized: true,
+}))
+
+
 
 app.use("/", indexRouter);
 app.use(express.static("public"));

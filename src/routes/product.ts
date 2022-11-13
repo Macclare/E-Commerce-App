@@ -33,14 +33,14 @@ router.get("/:user/products", verifyToken, ProductController.getProductsByUser);
 
 export default router;
 
-function single(
-	arg0: string
-): import("express-serve-static-core").RequestHandler<
-	{},
-	any,
-	any,
-	import("qs").ParsedQs,
-	Record<string, any>
-> {
-	throw new Error("Function not implemented.");
-}
+// function single(
+// 	arg0: string
+// ): import("express-serve-static-core").RequestHandler<
+// 	{},
+// 	any,
+// 	any,
+// 	import("qs").ParsedQs,
+// 	Record<string, any>
+// > {
+// 	throw new Error("Function not implemented.");
+// }

@@ -4,7 +4,7 @@
     <%- include('../partials/head'); %>
 </head>
 <body class="body" style=" background-color: #caa5ad; ">
-  <%- include('../partials/header'); %>
+  <%- include('../partials/backnav'); %>
 
    <div class="container p-4 text-center">
     <h1>Create Product</h1>  
@@ -12,55 +12,52 @@
    </div>
 
 <div class="container p-5 vh-100">
-    <form action="/product" method="post" style="width:50%; margin:0 auto ">
-        <!-- Name -->
-        <div class="form-outline mb-4">
-          <input type="text" name="name" id="form4Example1" class="form-control" />
-          <label class="form-label" for="form4Example1">Product Name</label>
-        </div>
-      
-        <!-- Product brand-->
-        <div class="form-outline mb-4">
-          <input type="text" name="brand" id="form4Example2" class="form-control" />
-          <label class="form-label" for="form4Example2">Product Brand</label>
-        </div>
-        <!-- Product category -->
-        <div class="form-outline mb-4">
-          <input type="text" name="category" id="form4Example2" class="form-control" />
-          <label class="form-label" for="form4Example2">Product Category</label>
-        </div>
-
-        <!-- Price -->
-        <div class="form-outline mb-4">
-          <input type="text" name="price" id="form4Example2" class="form-control" />
-          <label class="form-label" for="form4Example2">Price</label>
-        </div>
-
-        <!-- Count in stock -->
-        <div class="form-outline mb-4">
-          <input type="text" name="countInStock" id="form4Example2" class="form-control" />
-          <label class="form-label" for="form4Example2">Count in Stock</label>
-        </div>
-      
-        <!-- Product description -->
-        <div class="form-outline mb-4">
-          <textarea class="form-control" name="description" id="form4Example3" rows="4"></textarea>
-          <label class="form-label" for="form4Example3">Product description</label>
-        </div>
-    
-        <!-- image -->
-        <div class="form-outline mb-4">
-            <input type="file" name="image" id="form4Example2" class="form-control"/>
-            <label class="form-label" for="form4Example2"></label>
-          </div>
-
-        <!-- Submit button -->
-        <button type="submit" class="btn btn-block mb-4" style="background-color: whitesmoke;">Submit</button>
-      </form>
+  <form action="/product" method="POST" enctype="multipart/form-data" style="width: 50%; margin:0 auto">
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Product name</label>
+        <input type="text" name="name" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Product Brand</label>
+        <input type="text" name="brand" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Product Category</label>
+        <input type="text" name="category" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Price</label>
+        <input type="text" name="price" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Count In Stock</label>
+        <input type="text" name="countInStock" class="form-control" id="exampleFormControlInput1">
+    </div>
+    <!-- <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Product Rating</label>
+        <input type="text" name="rating" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div>
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Product Review</label>
+        <input type="text" name="numReviews" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+    </div> -->
+    <div class="mb-3">
+        <label for="exampleFormControlTextarea1" class="form-label">Product Description</label>
+        <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3"></textarea>
+    </div>
+<!-- image -->
+    <div class="mb-3">
+        <label for="exampleFormControlInput1" class="form-label">Add Image</label>
+        <input type="file" name="image" class="form-control" id="exampleFormControlInput1" />
+    </div>
+<!-- create button -->
+    <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
+        <button type="submit" class="btn btn-primary btn-lg">Add Product</button>
+    </div>
+</form>
 </div>
 
-
-        <%- include('../partials/footer'); %>
-    
+<%- include('../partials/footer'); %>
+<%= user %>  
 </body>
 </html>

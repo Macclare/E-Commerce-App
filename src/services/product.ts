@@ -2,7 +2,8 @@ import fs from "fs";
 import path from "path";
 import db from "../models";
 import HttpError from "../utils/httpError";
-import FILE_HOST  from "../config/env";
+import envsecret from "../config/env"
+// import FILE_HOST  from "../config/env";
 
 export const createProduct = async (data:any) =>{
 const {
@@ -85,12 +86,21 @@ export const deleteProduct = async (id:Number, userId:string) => {
     if(product.authorId !== userId){
         throw new HttpError("You are not authorized to delete this product", 404)
     }
-    const imagePath = path.join(
+    let imagePath = path.join(
     __dirname, 
-    "../public/", 
- product.image.split(`${FILE_HOST}`)[1])
+    "../../public/", 
+    product.image.split(`${envsecret.FILE_HOST}`)[1].replace('Weekly ', 'Weekly\ '))
 
-    fs.unlinkSync(imagePath);
+//  console.log("Product image: ", product.image, "Env Secret: ", envsecret.FILE_HOST)
+    try {
+        fs.unlinkSync(imagePath);
+    } catch (error) {
+        imagePath = path.join(
+            __dirname, 
+            "../public/", 
+            product.image.split(`${envsecret.FILE_HOST}`)[1].replace('Weekly ', 'Weekly\ '))
+        fs.unlinkSync(imagePath);
+    }
     await product.destroy();
     return product;
 }

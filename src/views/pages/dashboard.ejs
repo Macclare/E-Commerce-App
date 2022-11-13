@@ -4,92 +4,46 @@
     <%- include('../partials/head'); %>
 </head>
 <body class="body" style=" background-color: #caa5ad; min-height: 100vh;">
-  <%- include('../partials/header'); %>
+  <%- include('../partials/backnav'); %>
    
 
-    <section class="vh-100" style=" background-color: #caa5ad">
+    <section style=" background-color: #caa5ad">
         <div class="container p-4 text-center">
             <h1>Product Table</h1>                
             <a href="/addproduct" class="btn  btn-sm float-end" style="background-color: whitesmoke;">Add product</a>
 
         </div>
-     <div class="container p-5">
+     <div class="container pt-5">
         <div class="row">
-            <div class="col-md-6">
-                <div class="card mb-3" style="max-width: 540px;">
+          <% products.map((product, ind) => { %>
+            <div class="col-md-6 col-sm-6">
+                <div class="card mb-3">
                     <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
+                      <div class="col-6">
+                        <img src="<%= product.image %>" class="img-fluid rounded-start" alt="...">
                       </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Price</p>
-                          <a href="/edit" class="btn btn-md btn-warning">Edit</a>
-                          <a href="#!" class="btn btn-md btn-danger">Delete</a>
+                      <div class="col-6">
+                        <div class="card-body pt-3">
+                          <h5 class="card-title"><%= product.name %></h5>
+                          <p class="card-text"><%= product.price %></p>
+                          <a href="/edit/<%= product.id %>" class="btn btn-sm btn-warning mb-3">Edit</a>
+
+                          <form method="POST" action="/product/<%= product.id %>?_method=DELETE">
+                              <button class="btn btn-sm btn-danger" type="submit" style="border: none; background: none;">  
+                              <i style="color: red;" class="fa-solid fa-trash fa-danger p-2"> Delete</i>
+                            </button>
+                          </form>
+                          
                         </div>
                       </div>
                     </div>
                   </div>
               </div>
 
-            <div class="col-md-6">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="" class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Price</p>
-                          <a href="/edit" class="btn btn-primary btn-warning">Edit</a>
-                          <a href="#!" class="btn btn-primary btn-danger">Delete</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Price</p>
-                          <a href="/edit" class="btn btn-primary btn-warning">Edit</a>
-                          <a href="#!" class="btn btn-primary btn-danger">Delete</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-
-              <div class="col-md-6">
-                <div class="card mb-3" style="max-width: 540px;">
-                    <div class="row g-0">
-                      <div class="col-md-4">
-                        <img src="..." class="img-fluid rounded-start" alt="...">
-                      </div>
-                      <div class="col-md-8">
-                        <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text">Price</p>
-                          <a href="/edit" class="btn btn-primary btn-warning">Edit</a>
-                          <a href="#!" class="btn btn-primary btn-danger">Delete</a>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-              </div>
+              <% }) %>
         </div>
      </div>
     </section>
-
 
         <%- include('../partials/footer'); %>
     
